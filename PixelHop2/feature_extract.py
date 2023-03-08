@@ -43,10 +43,10 @@ def extract_all_features():
     shrinkArgs = [{'func':Shrink, 'win':3}, 
                 {'func': Shrink, 'win':3},]
     concatArg = {'func':Concat}
-    p2 = Pixelhop2(depth=1, TH1=0.1, TH2=0.00005, SaabArgs=SaabArgs, shrinkArgs=shrinkArgs, concatArg=concatArg)
+    p2 = Pixelhop2(depth=2, TH1=0.1, TH2=0.00005, SaabArgs=SaabArgs, shrinkArgs=shrinkArgs, concatArg=concatArg)
     output = p2.fit(X)
     output = p2.transform(X)
-    return output[0]
+    return (output[0], output[1])
 
 
 
