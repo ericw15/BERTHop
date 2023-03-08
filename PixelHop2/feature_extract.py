@@ -34,7 +34,6 @@ def extract_all_features():
     for file in os.scandir(train_dir):
         filename = train_dir + file.name
         images.append(dicom_to_png(filename))
-        break
 
     X = np.reshape(images, (len(images), 206, 206, 1))
 
