@@ -8,10 +8,7 @@ from sklearn.decomposition import PCA
 
 import importlib.util
 import sys
-spec = importlib.util.spec_from_file_location("module.name", "/content/drive/MyDrive/PixelHop2/myPCA.py")
-myPCA = importlib.util.module_from_spec(spec)
-sys.modules["module.name"] = myPCA
-spec.loader.exec_module(myPCA)
+from myPCA import myPCA
 
 class myPCA():
     def __init__(self, n_components=-1, isInteger=True, bits=12, opType='int64'):

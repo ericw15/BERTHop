@@ -9,10 +9,6 @@ from sklearn.decomposition import PCA
 
 import importlib.util
 import sys
-spec = importlib.util.spec_from_file_location("saab", "/content/drive/MyDrive/PixelHop2/saab.py")
-saab = importlib.util.module_from_spec(spec)
-sys.modules["saab"] = saab
-spec.loader.exec_module(saab)
 from saab import Saab
 
 class cwSaab():

@@ -53,8 +53,15 @@ class OpenIDataset(Dataset):
 
 if __name__ == "__main__":
 
-    training = OpenIDataset(df = openI, vf = openI_v_f,  split='train', model = args.model)
-    testing = OpenIDataset(df = openI, vf = openI_v_f,  split='test', model = args.model)
+    import importlib.util
+    spec=importlib.util.spec_from_file_location("FeatureExtract","PixelHop2/feature_extract.py")
+    FeatureExtract = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(FeatureExtract)
+
+    v_f = FeatureExtract.extract_all_features()
+
+    training = OpenIDataset(df = '''FILL WITH DF FROM CSV''', vf = v_f,  split='train', model = args.model)
+    testing = OpenIDataset(df = '''FILL WITH DF FROM CSV''', vf = v_f,  split='test', model = args.model)
 
     train_loader = DataLoader(training, batch_size=args.batch_size,shuffle=True, num_workers=0,drop_last=True, pin_memory=True)
     test_loader = DataLoader(testing, batch_size=128,shuffle=False, num_workers=0,drop_last=False, pin_memory=True)

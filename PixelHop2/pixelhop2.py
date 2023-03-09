@@ -2,10 +2,6 @@
 import numpy as np 
 import importlib.util
 import sys
-spec = importlib.util.spec_from_file_location("cwSaab", "/content/drive/MyDrive/PixelHop2/cwSaab.py")
-cwSaab = importlib.util.module_from_spec(spec)
-sys.modules["cwSaab"] = cwSaab
-spec.loader.exec_module(cwSaab)
 from cwSaab import cwSaab
 
 from sys import argv
